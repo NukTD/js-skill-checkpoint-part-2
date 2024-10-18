@@ -5,5 +5,15 @@ const students = [
   { name: "David", score: 48 },
   { name: "Eve", score: 91 },
 ];
+function findStudentsScores(studentScore) {
+  return studentScore
+    .filter((studentScore) => studentScore.score > 50)
+    .map((student) => ({
+      ...student,
+      score: student.score + (student.score * 10) / 100,
+    }))
+    .reduce((acc, curr) => acc + curr.score, 0);
+}
 
-// เริ่มเขียนโค้ดตรงนี้
+const totalScore = findStudentsScores(students);
+console.log(`Total score is ${totalScore}`);
